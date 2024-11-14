@@ -1,4 +1,5 @@
 import Input from "./Input";
+import Button from "./Button";
 
 export default function AddProject() {
   return (
@@ -14,9 +15,7 @@ export default function AddProject() {
           <button className="text-red-500 hover:text-red-800">Cancel</button>
         </li>
         <li>
-          <button className="px-6 py-2 rounded-md bg-green-700 text-slate-200 hover:text-slate-50 hover:bg-green-500">
-            Save
-          </button>
+          <Button>Add Project</Button>
         </li>
       </menu>
     </div>
