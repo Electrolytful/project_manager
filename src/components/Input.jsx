@@ -1,6 +1,8 @@
+import { forwardRef } from "react";
 import PropTypes, { any } from "prop-types";
 
-export default function Input({ label, textarea, ...props }) {
+const Input = forwardRef(function Input({ label, textarea, ...props }, ref) {
+  // input variable to give same style to multiple tags
   const inputStyles =
     "w-full p-1 border-b-2 rounded-sm focus:outline-none text-slate-600";
 
@@ -11,6 +13,7 @@ export default function Input({ label, textarea, ...props }) {
       </label>
       {textarea ? (
         <textarea
+          ref={ref}
           className={inputStyles}
           autoComplete="on"
           rows={5}
@@ -18,12 +21,15 @@ export default function Input({ label, textarea, ...props }) {
           {...props}
         />
       ) : (
-        <input className={inputStyles} {...props} />
+        <input ref={ref} className={inputStyles} {...props} />
       )}
     </p>
   );
-}
+});
 
+export default Input;
+
+// defining prop types for the Input component
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   textarea: PropTypes.bool,

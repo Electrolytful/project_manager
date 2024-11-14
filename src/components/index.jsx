@@ -1,3 +1,5 @@
+// index file to easily export and import all components
+
 import Sidebar from "./Sidebar";
 import AddProject from "./AddProject";
 import NoProject from "./NoProject";

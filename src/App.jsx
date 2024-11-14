@@ -7,7 +7,8 @@ export default function App() {
     projects: [],
   });
 
-  const handleAddProject = () => {
+  // handler function to change the current selected project state
+  const handleStartAddProject = () => {
     setProjectState((prevState) => {
       return {
         ...prevState,
@@ -16,13 +17,36 @@ export default function App() {
     });
   };
 
+  // handler function to add a project to the global state based on the input passed in by the user
+  const handleAddProject = (projectData) => {
+    setProjectState((prevState) => {
+      const newProject = {
+        id: Math.random(),
+        ...projectData,
+      };
+
+      return {
+        ...prevState,
+        projects: [...prevState.projects, newProject],
+      };
+    });
+  };
+
+  console.log(projectState);
+
+  let content;
+
+  // assigning the content of the page based on whether a project is selected, being added or no project currently exists
+  if (projectState.selectedProjectId === undefined) {
+    content = <NoProject onStartAddProject={handleStartAddProject} />;
+  } else if (projectState.selectedProjectId === null) {
+    content = <AddProject onAddProject={handleAddProject} />;
+  }
+
   return (
     <main className="w-full h-screen flex gap-8">
-      <Sidebar onAddProject={handleAddProject} />
-      {projectState.selectedProjectId === undefined && (
-        <NoProject onAddProject={handleAddProject} />
-      )}
-      {projectState.selectedProjectId === null && <AddProject />}
+      <Sidebar onStartAddProject={handleStartAddProject} />
+      {content}
     </main>
   );
 }
