@@ -27,11 +27,11 @@ const Input = forwardRef(function Input({ label, textarea, ...props }, ref) {
   );
 });
 
-export default Input;
-
 // defining prop types for the Input component
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   textarea: PropTypes.bool,
   props: PropTypes.arrayOf(any),
 };
+
+export default Input;

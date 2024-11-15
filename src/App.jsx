@@ -20,19 +20,20 @@ export default function App() {
   // handler function to add a project to the global state based on the input passed in by the user
   const handleAddProject = (projectData) => {
     setProjectState((prevState) => {
+      const projectId = Math.random();
+
       const newProject = {
-        id: Math.random(),
+        id: projectId,
         ...projectData,
       };
 
       return {
         ...prevState,
+        selectedProjectId: undefined,
         projects: [...prevState.projects, newProject],
       };
     });
   };
-
-  console.log(projectState);
 
   let content;
 
@@ -45,7 +46,10 @@ export default function App() {
 
   return (
     <main className="w-full h-screen flex gap-8">
-      <Sidebar onStartAddProject={handleStartAddProject} />
+      <Sidebar
+        onStartAddProject={handleStartAddProject}
+        projects={projectState.projects}
+      />
       {content}
     </main>
   );
