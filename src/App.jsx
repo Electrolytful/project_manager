@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Sidebar, AddProject, NoProject } from "./components";
+import { Sidebar, AddProject, NoProject, SelectedProject } from "./components";
 
 export default function App() {
   const [projectState, setProjectState] = useState({
@@ -45,7 +45,20 @@ export default function App() {
     });
   };
 
-  let content;
+  const handleSelectProject = (id) => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: id,
+      };
+    });
+  };
+
+  const selectedProject = projectState.projects.find(
+    (project) => project.id === projectState.selectedProjectId
+  );
+
+  let content = <SelectedProject project={selectedProject} />;
 
   // assigning the content of the page based on whether a project is selected, being added or no project currently exists
   if (projectState.selectedProjectId === undefined) {
@@ -64,6 +77,7 @@ export default function App() {
       <Sidebar
         onStartAddProject={handleStartAddProject}
         projects={projectState.projects}
+        onSelectProject={handleSelectProject}
       />
       {content}
     </main>
