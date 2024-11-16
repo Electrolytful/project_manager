@@ -7,12 +7,22 @@ export default function App() {
     projects: [],
   });
 
-  // handler function to change the current selected project state
+  // handler function to change the current selected project state to null, triggering the window for adding a project to show
   const handleStartAddProject = () => {
     setProjectState((prevState) => {
       return {
         ...prevState,
         selectedProjectId: null,
+      };
+    });
+  };
+
+  // handler function to change the current selected project state to undefined, effectively cancelling the adding of a project
+  const handleCancelAddProject = () => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
       };
     });
   };
@@ -41,7 +51,12 @@ export default function App() {
   if (projectState.selectedProjectId === undefined) {
     content = <NoProject onStartAddProject={handleStartAddProject} />;
   } else if (projectState.selectedProjectId === null) {
-    content = <AddProject onAddProject={handleAddProject} />;
+    content = (
+      <AddProject
+        onAddProject={handleAddProject}
+        onCancel={handleCancelAddProject}
+      />
+    );
   }
 
   return (

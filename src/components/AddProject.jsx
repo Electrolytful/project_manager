@@ -5,7 +5,7 @@ import Button from "./Button";
 import Modal from "./Modal";
 import PropTypes from "prop-types";
 
-export default function AddProject({ onAddProject }) {
+export default function AddProject({ onAddProject, onCancel }) {
   const modal = useRef();
 
   const title = useRef();
@@ -51,7 +51,12 @@ export default function AddProject({ onAddProject }) {
         </div>
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            <button className="text-red-500 hover:text-red-800">Cancel</button>
+            <button
+              className="text-red-500 hover:text-red-800"
+              onClick={onCancel}
+            >
+              Cancel
+            </button>
           </li>
           <li>
             <Button type="save" onClick={handleSave}>
@@ -67,4 +72,5 @@ export default function AddProject({ onAddProject }) {
 // defining the prop types for the AddProject component
 AddProject.propTypes = {
   onAddProject: PropTypes.func,
+  onCancel: PropTypes.func,
 };
