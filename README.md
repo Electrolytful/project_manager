@@ -1,12 +1,6 @@
 <a name="readme-top"></a>
 
 
-<!-- PROJECT LOGO -->
-<p align="center">
-  <img src="" alt="project logo" height=250px width=250px aspect-ratio="1 / 1" align="center" />
-</p>
-
-
 <!-- PROJECT OVERVIEW -->
 <br />
   <h3 align="center">Project Manager</h3>
@@ -30,7 +24,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+An app to keep track of projects and tasks within those projects. Developed to practice using React.js and TailwindCSS.
 
 <b>Link to live demo: (project still under development)</b>
 
@@ -54,7 +48,11 @@
 
 <!-- Screenshots -->
 ## Screenshots
-<!-- <img src="" alt="" width="1200"/> -->
+<img src="./public/screenshots/homepage.png" alt="homepage screenshot" width="1200"/>
+<img src="./public/screenshots/add_project.png" alt="add project screenshot" width="1200"/>
+<img src="./public/screenshots/view_project.png" alt="view project screenshot" width="1200"/>
+<img src="./public/screenshots/add_tasks.png" alt="add tasks screenshot" width="1200"/>
+<img src="./public/screenshots/error_modal.png" alt="error modal screenshot" width="1200"/>
 <!-- <img src="" alt="" width="300"/> -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
