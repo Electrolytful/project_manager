@@ -12,9 +12,12 @@ export default function Tasks({ tasks, onAdd, onDelete }) {
         </p>
       )}
       {tasks.length > 0 && (
-        <ul className="p-4 mt-8 rounded-md bg-slate-100">
+        <ul className="flex flex-col gap-8 p-4 mt-8">
           {tasks.map((task) => (
-            <li key={task.id} className="flex justify-between my-4">
+            <li
+              key={task.id}
+              className="flex justify-between p-8 rounded-md bg-slate-100"
+            >
               <span>{task.text}</span>
               <button
                 className="text-slate-700 hover:text-red-500"
