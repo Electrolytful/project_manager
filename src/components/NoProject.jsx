@@ -3,7 +3,7 @@ import Button from "./Button";
 
 export default function NoProject({ onStartAddProject }) {
   return (
-    <div className="text-center w-[35rem] m-auto self-center">
+    <div className="w-full text-center m-auto self-center">
       <h2 className="mb-4 text-xl font-bold text-slate-500">
         No Project Selected
       </h2>

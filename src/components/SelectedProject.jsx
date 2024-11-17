@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default function SelectedProject({ project }) {
+export default function SelectedProject({ project, onDelete }) {
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "long",
@@ -8,13 +8,16 @@ export default function SelectedProject({ project }) {
   });
 
   return (
-    <div className="w-full mt-16 p-4">
+    <div className="w-full mt-16 p-8">
       <header className="pb-4 mb-4 border-b-2 border-slate-300">
         <div className="flex items-center justify-between">
           <h1 className="mb-2 text-3xl font-bold text-slate-600">
             {project.title}
           </h1>
-          <button className="text-slate-600 hover:text-slate-950">
+          <button
+            className="text-slate-600 hover:text-slate-950"
+            onClick={onDelete}
+          >
             Delete
           </button>
         </div>
@@ -32,4 +35,5 @@ export default function SelectedProject({ project }) {
 
 SelectedProject.propTypes = {
   project: PropTypes.object,
+  onDelete: PropTypes.func,
 };
