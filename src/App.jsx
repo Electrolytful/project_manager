@@ -78,7 +78,14 @@ export default function App() {
   };
 
   // handler function to delete the selected task from the selected project
-  const handleDeleteTask = () => {};
+  const handleDeleteTask = (id) => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.id !== id),
+      };
+    });
+  };
 
   // handler function to set the selected project id to the id of the project that the user selects on the sidebar
   const handleSelectProject = (id) => {

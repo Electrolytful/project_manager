@@ -2,13 +2,17 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 export default function NewTask({ onAdd }) {
-  const [taskInput, setTaskInput] = useState();
+  const [taskInput, setTaskInput] = useState("");
 
   const handleChange = (event) => {
     setTaskInput(event.target.value);
   };
 
   const handleClick = () => {
+    if (taskInput.trim() === "") {
+      return;
+    }
+
     onAdd(taskInput);
     setTaskInput("");
   };

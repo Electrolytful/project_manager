@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import NewTask from "./NewTask";
 
-export default function Tasks({ tasks, onAdd }) {
+export default function Tasks({ tasks, onAdd, onDelete }) {
   return (
     <section>
       <h2 className="mb-4 text-2xl font-bold text-slate-700">Tasks</h2>
@@ -16,7 +16,10 @@ export default function Tasks({ tasks, onAdd }) {
           {tasks.map((task) => (
             <li key={task.id} className="flex justify-between my-4">
               <span>{task.text}</span>
-              <button className="text-slate-700 hover:text-red-500">
+              <button
+                className="text-slate-700 hover:text-red-500"
+                onClick={() => onDelete(task.id)}
+              >
                 Delete
               </button>
             </li>
