@@ -26,7 +26,7 @@
 ## About The Project
 An app to keep track of projects and tasks within those projects. Developed to practice using React.js and TailwindCSS.
 
-<b>Link to live demo: (project still under development)</b>
+<b>Link to live demo: https://projectmanager-erhandev.vercel.app</b>
 
 <p align="right">(<a href="#readme-top">Back to top</a>)</p>
 
