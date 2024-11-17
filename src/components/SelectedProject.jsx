@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
 import Tasks from "./Tasks";
 
-export default function SelectedProject({ project, onDelete }) {
+export default function SelectedProject({
+  project,
+  tasks,
+  onDelete,
+  onAddTask,
+  onDeleteTask,
+}) {
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "long",
@@ -29,12 +35,15 @@ export default function SelectedProject({ project, onDelete }) {
         </p>
       </header>
 
-      <Tasks />
+      <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks} />
     </div>
   );
 }
 
 SelectedProject.propTypes = {
   project: PropTypes.object,
+  tasks: PropTypes.array,
   onDelete: PropTypes.func,
+  onAddTask: PropTypes.func,
+  onDeleteTask: PropTypes.func,
 };

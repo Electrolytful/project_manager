@@ -5,6 +5,7 @@ export default function App() {
   const [projectState, setProjectState] = useState({
     selectedProjectId: undefined,
     projects: [],
+    tasks: [],
   });
 
   // handler function to change the current selected project state to null, triggering the window for adding a project to show
@@ -45,16 +46,25 @@ export default function App() {
     });
   };
 
-  // handler function to set the selected project id to the id of the project that the user selects on the sidebar
-  const handleSelectProject = (id) => {
+  // handler function for adding a task to an existing project
+  const handleAddTask = (task) => {
     setProjectState((prevState) => {
+      const taskId = Math.random();
+
+      const newTask = {
+        text: task,
+        id: taskId,
+        projectId: prevState.selectedProjectId,
+      };
+
       return {
         ...prevState,
-        selectedProjectId: id,
+        tasks: [newTask, ...prevState.tasks],
       };
     });
   };
 
+  // handler function to delete the selected task
   const handleDeleteProject = () => {
     setProjectState((prevState) => {
       return {
@@ -67,13 +77,33 @@ export default function App() {
     });
   };
 
+  // handler function to delete the selected task from the selected project
+  const handleDeleteTask = () => {};
+
+  // handler function to set the selected project id to the id of the project that the user selects on the sidebar
+  const handleSelectProject = (id) => {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: id,
+      };
+    });
+  };
+
   // variable that stores the project that the user currently has selected, passed into the SelectedProject component
   const selectedProject = projectState.projects.find(
     (project) => project.id === projectState.selectedProjectId
   );
 
+  // YES I KNOW IT'S PROP DRILLING
   let content = (
-    <SelectedProject project={selectedProject} onDelete={handleDeleteProject} />
+    <SelectedProject
+      project={selectedProject}
+      tasks={projectState.tasks}
+      onDelete={handleDeleteProject}
+      onAddTask={handleAddTask}
+      onDeleteTask={handleDeleteTask}
+    />
   );
 
   // assigning the content of the page based on whether a project is selected, being added or no project currently exists
