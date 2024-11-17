@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Tasks from "./Tasks";
 
 export default function SelectedProject({ project, onDelete }) {
   const formattedDate = new Date(project.dueDate).toLocaleDateString("en-GB", {
@@ -28,7 +29,7 @@ export default function SelectedProject({ project, onDelete }) {
         </p>
       </header>
 
-      {/* list of tasks */}
+      <Tasks />
     </div>
   );
 }
